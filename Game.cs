@@ -26,29 +26,10 @@ namespace OOP
             Commando newCommando = CommandoFactory.CreateCommando(name, codeName, commandoType);
             return newCommando;
         }
-        public object CreateWeapon(string weaponType)
+        public object CreateWeapon(WeaponType weaponType)
         {
             return WeaponFactory.CreateWeapon(weaponType);
         }
 
-        public IShootable CreateM16()
-        {
-            return (IShootable)WeaponFactory.CreateWeapon("M16");
-        }
-
-        public IShootable CreateAK47()
-        {
-            return (IShootable)WeaponFactory.CreateWeapon("AK47");
-        }
-
-        public IBreakable CreateRock()
-        {
-            return (IBreakable)WeaponFactory.CreateWeapon("Rock");
-        }
-
-        public IBreakable CreateKnife()
-        {
-            return (IBreakable)WeaponFactory.CreateWeapon("Knife");
-        }
     }
 }

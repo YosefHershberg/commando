@@ -2,8 +2,6 @@ using System;
 
 namespace OOP
 {
-    // This class is now legacy. Use IShootable/IBreakable interfaces for new weapons.
-    [Obsolete("Use IShootable/IBreakable interfaces for new weapons.")]
     public class Weapon
     {
         public string Name { get; set; }

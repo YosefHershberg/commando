@@ -14,4 +14,12 @@ namespace OOP.Utils
         Sea,
         Air
     }
+
+    public enum WeaponType
+    {
+        M16,
+        AK47,
+        Rock,
+        Knife
+    }
 }

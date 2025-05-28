@@ -1,29 +1,31 @@
 using System;
 using System.Collections.Generic;
 using OOP.weapon;
+using OOP.Utils;
 
 namespace OOP
 {
     class WeaponFactory
     {
         //here we save the type of weapon and the function that creates it
-        private Dictionary<string, Func<object>> weaponRegistry = new Dictionary<string, Func<object>>();
+        private Dictionary<WeaponType, Func<object>> weaponRegistry = new Dictionary<WeaponType, Func<object>>();
 
         public WeaponFactory()
         {
-            RegisterWeapon("M16", () => new M16());
-            RegisterWeapon("AK47", () => new AK47());
-            RegisterWeapon("Rock", () => new Rock("Rock", 2.0, "Gray"));
-            RegisterWeapon("Knife", () => new Knife("Knife", "Steel", "DefaultMaker", "Silver", 0.5));
+            RegisterWeapon(WeaponType.M16, () => new M16());
+            RegisterWeapon(WeaponType.AK47, () => new AK47());
+            RegisterWeapon(WeaponType.Rock, () => new Rock("Rock", 2.0, "Gray"));
+            RegisterWeapon(WeaponType.Knife, () => new Knife("Knife", "Steel", "DefaultMaker", "Silver", 0.5));
         }
 
         // This is where open closed principle
-        public void RegisterWeapon(string weaponType, Func<object> creator)
+        // NOTE: in order to register a new weapon u must add it to the WeaponType enum
+        public void RegisterWeapon(WeaponType weaponType, Func<object> creator)
         {
             weaponRegistry[weaponType] = creator;
         }
 
-        public object CreateWeapon(string weaponType)
+        public object CreateWeapon(WeaponType weaponType)
         {
             if (weaponRegistry.ContainsKey(weaponType))
                 return weaponRegistry[weaponType]();
